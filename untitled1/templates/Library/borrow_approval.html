@@ -1,0 +1,24 @@
+{% extends 'Library/base.html' %}
+{% block title %}Book request {% endblock %}
+{% block body %}
+    {% if error_message %}
+        {{ error_message }}
+    {% else %}
+        {% if book %}
+            {% for b in book %}
+                <div class="row list-group-item" style="border: 2px solid black " >
+                <div class="col-sm-3"> <img src="{{ b.book.image.url }}" class ="img-rounded" style="width: 200px;height:200px" alt=""> </div>
+                <div class="col-sm-6">
+                    <div class="list-group">
+                        <h4 class="list-group-item-heading"> Book Name : &nbsp;{{ b.book.title}}</h4>Requested By : &nbsp;&nbsp;&nbsp;{{ b.user.get_username }}
+                    </div>
+                </div>
+    <div class="col-sm-6">
+         <a href="{% url 'book_accept' b.pk %}"> <button class="button btn-success">Accept</button></a>
+                <a href="{% url 'book_reject' b.pk %}"><button class="button btn-danger">Reject</button></a>
+    </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

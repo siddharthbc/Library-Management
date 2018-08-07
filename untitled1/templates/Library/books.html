@@ -1,0 +1,24 @@
+{% extends 'Library/base.html' %}
+
+{% block body %}
+    {% if error_message %}
+        {{ error_message }}
+    {% else %}
+        <ul><ul><ul>
+        {% for books in book_is %}
+            <div class="row">
+
+                    <div class="col-sm-4 ">
+                        <div>
+                        <img src="{{ books.book.image.url }}" style="width: 255px;height: 255px;" ><br><br>
+                        <a href="{% url 'detail' books.book.id %}" style="color: white"> <button type="button"class="btn-info"> {{ books.book.title }}</button></a><br><br>
+                        </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+
+        </ul></ul></ul>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'Library/base.html' %}
+<!--{% block title %}Book Detail{% endblock %}-->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    #outer{
+        align-content: center;
+    }
+</style>
+{% block body %}
+    <div id="outer">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Login</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'Library/form_template.html' %}
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                               <button type="submit" class="btn btn-success">Login</button>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-offset-2 col-sm-5">
+                                <a href="{% url 'home' %}">
+                                <button type="button" class="btn btn-success">Go to Start</button>
+                        </a>
+                            </div>
+                            </div>
+
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    Don't have an account? <a href="{% url 'signup' %}">Click here</a> to register.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+{% endblock %}

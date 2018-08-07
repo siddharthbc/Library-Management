@@ -1,0 +1,26 @@
+
+{% extends 'Library/base.html' %}
+
+{% block body %}
+    {% if error_message %}
+        {{ error_message }}
+    {%endif %}
+
+{% if fine  %}
+        {% for fines in fine %}
+                <div class="row list-group-item" style="border: 2px solid black " >
+                    <div class="col-sm-3"> <img src="{{ fines.book.image.url }}" class ="img-rounded" style="width: 200px;height:200px" alt=""> </div>
+                <div class="col-sm-6">
+                    <div class="list-group">
+                        <h4 class="list-group-item-heading"> Book Name : &nbsp;{{ fines.book.title}}</h4><br>Fine : &nbsp;&nbsp;&nbsp;Rs.{{ fines.fine }}
+                    </div>
+                </div>
+                </div>
+                <!--<h3>BOOK NAME : &nbsp;{{ fines.book.title }}</h3>
+                <h4>Fine : Rs.{{ fines.fine }}</h4>-->
+                <a href="{% url 'download' fines.pk %}"><button type="button" class="btn btn-success" style="font-size: 15px;"> Download reciept</button></a>
+                <br><br>
+        {% endfor %}
+        {% endif %}
+
+{% endblock %}

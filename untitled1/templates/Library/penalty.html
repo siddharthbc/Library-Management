@@ -1,0 +1,15 @@
+{% extends 'Library/base.html' %}
+{% block body %}
+<h1 style="text-align: center;border-bottom: 2px solid black">Fine </h1>
+
+<h2 style="color: cyan">Returned Time  :{{ return_date }}</h2>
+<h2 style="color: aqua">Time to return  : {{actual_date}}</h2>
+
+    {% if fine %}
+<h2 style="color: red">Fine = {{ fine }}</h2>
+    {% endif %}
+    <a href="{% url 'feedback' book.id %}">
+    <button>Pay Fine</button>
+    </a>
+
+{% endblock %}

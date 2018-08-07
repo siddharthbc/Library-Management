@@ -1,0 +1,47 @@
+{% extends 'Library/base.html' %}
+{% block title %}Book Detail{% endblock %}
+
+
+{% block body %}
+    <h1 style="text-align: center;">{{ book.title }}</h1>
+    <div class="container">
+        <div class="row">
+            <div class = "col-sm-4 ">
+                <h4 style="color: white"> Author : &nbsp&nbsp&nbsp&nbsp&nbsp{{ book.author.first_name  }} &nbsp {{ book.author.last_name }}<br></h4>
+                <h4 style="color:white">ISBN :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ book.isbn}}<br></h4>
+                <h4 style="color: white">Language : {{ book.language }}<br></h4>
+                <h4 style="color: white">Genre : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ book.genre.name }}<br></h4>
+                <h4 style="color: white">Rating : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ num|floatformat:1 }}<br></h4>
+            </div>
+            <div class="col-sm-5 ">
+               <img src="{{ book.image.url }} " style="width: 400px;height: 400px;"><br>
+            </div>
+            <div class="col-sm-3 ">
+
+                {% if requested or reject %}
+                    <a href="{% url 'borrow' book.pk %}"><button type="button" class="btn btn-success">Borrow</button> </a>
+                    <button type="button" class="btn btn-primary disabled" >Return</button>
+                {% endif %}
+                {% if borrow %}
+                    <button type="button" class="btn btn-primary disabled">Borrow</button>
+                    <a href="{% url 'book_return' book.pk %}"><button type="button" class="btn btn-success" >Return</button></a>
+                {% endif %}
+                {% if pending %}
+                    <button type="button" class="btn btn-primary disabled">Borrow</button>
+                    <button type="button" class="btn btn-primary disabled" >Return</button>
+                {% endif %}
+                {% if error_message %}
+                    {{ error_message }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    <h4  style="color: white;text-align: center"> Summary :<br></h4> <p style="color:black" class="jumbotron">{{ book.summary }}<br></p>
+
+    {{ success }}
+
+{% endblock %}
+
+

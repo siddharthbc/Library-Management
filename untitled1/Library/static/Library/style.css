@@ -1,0 +1,13 @@
+#bg{
+    background-size: 1800px 1000px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+.active{
+    background:red;
+}
+button.btn:active{
+    background:red;
+}

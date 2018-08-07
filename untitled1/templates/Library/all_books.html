@@ -1,0 +1,26 @@
+{% extends 'Library/base.html' %}
+{% block body %}
+    {% if all_books %}
+    <div class="container-fluid">
+    {% for books in all_books %}
+        <div class="list-group">
+            <div class="row list-group-item" style="border: 2px solid black " >
+                <div class="col-sm-4"> <img src="{{ books.image.url }}" class ="img-rounded" style="width: 200px;height:200px" alt="Cinque Terre"> </div>
+                <div class="col-sm-8">
+                    <div class="list-group">
+                        <a href="{% url 'detail' books.id %}" class="list-group-item active">
+                        <h4 class="list-group-item-heading">{{ books.title}}</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <BR><BR>
+    {% endfor %}
+    </div>
+{% else %}
+    <h1>There are no books to display</h1>
+{% endif %}
+
+
+{% endblock %}

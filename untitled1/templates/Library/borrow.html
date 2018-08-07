@@ -1,0 +1,13 @@
+{% extends 'Library/base.html' %}
+{% block title %}MY BORROWED BOOKS {% endblock %}
+{% block body %}
+    {% if book_instances %}
+        {% for books in book_instances %}
+            {{ books.book.title }}
+        {% endfor %}
+    {% else %}
+        <h1 style="color: cyan">You have not borrowed any books</h1>
+    {% endif %}
+
+
+{% endblock %}

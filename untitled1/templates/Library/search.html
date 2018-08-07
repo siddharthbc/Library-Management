@@ -1,0 +1,22 @@
+{% extends 'Library/base.html' %}
+{% block body %}
+
+{% if all_books %}
+    <ul>
+
+        {% for b in all_books %}
+
+
+                <div class="col-sm-4 " >
+                    <img src="{{ b.image.url }}" style="width : 255px; height: 255px;"><br>
+                    <strong><a href="{% url 'detail' b.pk %}" style="color: white">{{b.title }}</a></strong><br>
+                </div>
+
+
+
+        {% endfor %}
+    </ul>
+{% else %}
+        <h3>There are no books</h3>
+{% endif %}
+{% endblock %}

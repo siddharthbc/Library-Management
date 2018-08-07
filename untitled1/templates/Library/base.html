@@ -1,0 +1,59 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LIBRARY{% endblock %}</title>
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text/css">
+<style>
+    #leftt{
+        alignment: left;
+    }
+</style>
+
+
+</head>
+
+<body style="background-color: #777">
+{% if user.is_authenticated %}
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" style="color: deepskyblue">RVCE</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'welcome' %}">Home</a></li>
+      <li><a href="{% url 'books'%}">ALL BOOKS</a></li>
+    </ul>
+      <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'search' %}">
+                 <div class="form-group">
+                    <input type="text" class="form-control" name="q" placeholder="search" value="{{ request.GET.q }}">
+                 </div>
+
+                    <button type="submit" class="btn btn-default"><p> <span class="glyphicon glyphicon-search"></span></p></button>
+            </form>
+      <div class="nav navbar-nav navbar-right">&nbsp;&nbsp;&nbsp;
+          {% if user.is_superuser %}
+                    <li><a href="{% url 'issue_books' %}">REQUESTS </a> </li>
+              {% else %}
+                                <li><a href="{% url 'fine' %}">DUES </a> </li>
+              {% endif %}
+                                <li><a href="{% url 'borrowed_books' %}">MY BOOKS</a></li>
+                                <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>&nbsp;
+
+          <br><li class="active" style="color: aquamarine">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome&nbsp;{{ user.get_username }}</li>
+
+
+
+      </div>
+  </div>
+</nav>
+{% endif %}
+{% block body %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'Library/base.html' %}
+
+{% block body %}
+    <h1 style="text-align: center;border-bottom: 2px solid black">Fine </h1>
+
+<h2>Date to return  :{{ return_date }}:{{ return_date_minute }}</h2>
+<h2>Returned Date  : {{actual_date}}</h2>
+
+    {% if fine %}
+<h2>Fine = {{ fine }}</h2>
+    {% endif %}
+    <a href="{% url 'feedback' feedback_use.book.pk %}">
+    <button>Give feedback</button>
+    </a>
+    <a href="{% url 'download' %}">Download reciept</a>
+{% endblock %}

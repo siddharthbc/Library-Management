@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Django default" uuid="7bf95e3b-5bc7-49f8-ad5a-5ed23b390d5a">
+    <database-info product="SQLite" version="3.16.1" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <schema name="" catalog=""/>
+    <table name="Library_author" schema="" catalog="" type="TABLE">
+      <column name="contact_no" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(254)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="email"/>
+      <exported-key name="#FAKE_Library_book_5" table="Library_book" schema="" catalog="" columns="author_id"/>
+    </table>
+    <table name="Library_book" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="summary" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="isbn" sqlType="VARCHAR(13)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="image" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="publication_date" sqlType="DATE" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="author_id" sqlType="VARCHAR(254)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="publisher_id" sqlType="VARCHAR(254)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="request_user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="language_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="genre_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="number_of_books" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_Library_book_1" columns="genre_id" ref-table="Library_genre" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_book_2" columns="language_id" ref-table="Library_language" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_book_3" columns="request_user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_book_4" columns="publisher_id" ref-table="Library_publisher" ref-schema="" ref-catalog="" ref-columns="email" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_book_5" columns="author_id" ref-table="Library_author" ref-schema="" ref-catalog="" ref-columns="email" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_Library_book_issue_2" table="Library_book_issue" schema="" catalog="" columns="book_id"/>
+      <exported-key name="#FAKE_Library_bookinstance_2" table="Library_bookinstance" schema="" catalog="" columns="book_id"/>
+      <exported-key name="#FAKE_Library_feedback_2" table="Library_feedback" schema="" catalog="" columns="book_id"/>
+      <exported-key name="#FAKE_Library_fine_2" table="Library_fine" schema="" catalog="" columns="book_id"/>
+      <index name="Library_book_genre_id_46aa2cb2" unique="true" columns="genre_id"/>
+      <index name="Library_book_language_id_fae8f7c6" unique="true" columns="language_id"/>
+      <index name="Library_book_request_user_id_f6ab7ca0" unique="true" columns="request_user_id"/>
+      <index name="Library_book_publisher_id_6a25124e" unique="true" columns="publisher_id"/>
+      <index name="Library_book_author_id_332dde87" unique="true" columns="author_id"/>
+    </table>
+    <table name="Library_book_issue" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="book_issued" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="book_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="datetime" sqlType="TIME" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_Library_book_issue_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_book_issue_2" columns="book_id" ref-table="Library_book" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="Library_book_issue_user_id_c0283ac3" unique="true" columns="user_id"/>
+      <index name="Library_book_issue_book_id_d1e9b7bb" unique="true" columns="book_id"/>
+    </table>
+    <table name="Library_bookinstance" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="CHAR(32)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="imprint" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="due_back" sqlType="DATE" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="book_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="borrower_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="status" sqlType="VARCHAR(1)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_Library_bookinstance_1" columns="borrower_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_bookinstance_2" columns="book_id" ref-table="Library_book" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="Library_bookinstance_borrower_id_55b87dfd" unique="true" columns="borrower_id"/>
+      <index name="Library_bookinstance_book_id_637a199b" unique="true" columns="book_id"/>
+    </table>
+    <table name="Library_feedback" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="rating" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="text" sqlType="VARCHAR(500)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="book_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_Library_feedback_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_feedback_2" columns="book_id" ref-table="Library_book" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="Library_feedback_user_id_669ec398" unique="true" columns="user_id"/>
+      <index name="Library_feedback_book_id_4e50b079" unique="true" columns="book_id"/>
+    </table>
+    <table name="Library_fine" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="fine" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="book_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_Library_fine_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_Library_fine_2" columns="book_id" ref-table="Library_book" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="Library_fine_user_id_d626edd8" unique="true" columns="user_id"/>
+      <index name="Library_fine_book_id_92b2f8a5" unique="true" columns="book_id"/>
+    </table>
+    <table name="Library_genre" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_Library_book_1" table="Library_book" schema="" catalog="" columns="genre_id"/>
+    </table>
+    <table name="Library_language" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_Library_book_2" table="Library_book" schema="" catalog="" columns="language_id"/>
+    </table>
+    <table name="Library_publisher" schema="" catalog="" type="TABLE">
+      <column name="contact_no" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(254)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="email"/>
+      <exported-key name="#FAKE_Library_book_4" table="Library_book" schema="" catalog="" columns="publisher_id"/>
+    </table>
+    <table name="Library_users" schema="" catalog="" type="TABLE">
+      <column name="first_name" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(30)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="contact_no" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="usn" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="usn"/>
+      <foreign-key name="#FAKE_Library_users_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="Library_users_user_id_01c6dfab" unique="true" columns="user_id"/>
+    </table>
+    <table name="auth_group" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(80)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_auth_group_permissions_2" table="auth_group_permissions" schema="" catalog="" columns="group_id"/>
+      <exported-key name="#FAKE_auth_user_groups_1" table="auth_user_groups" schema="" catalog="" columns="group_id"/>
+    </table>
+    <table name="auth_group_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_group_permissions_1" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_auth_group_permissions_2" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="auth_group_permissions_permission_id_84c5c92e" unique="true" columns="permission_id"/>
+      <index name="auth_group_permissions_group_id_b120cbf9" unique="true" columns="group_id"/>
+      <index name="auth_group_permissions_group_id_permission_id_0cd325b0_uniq" unique="true" columns="group_id,permission_id"/>
+    </table>
+    <table name="auth_permission" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="content_type_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="codename" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_permission_1" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_auth_group_permissions_1" table="auth_group_permissions" schema="" catalog="" columns="permission_id"/>
+      <exported-key name="#FAKE_auth_user_user_permissions_1" table="auth_user_user_permissions" schema="" catalog="" columns="permission_id"/>
+      <index name="auth_permission_content_type_id_2f476e4b" unique="true" columns="content_type_id"/>
+      <index name="auth_permission_content_type_id_codename_01ab375a_uniq" unique="true" columns="content_type_id,codename"/>
+    </table>
+    <table name="auth_user" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="password" sqlType="VARCHAR(128)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="is_superuser" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR(30)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR(30)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(254)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="is_staff" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="is_active" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="date_joined" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_Library_book_3" table="Library_book" schema="" catalog="" columns="request_user_id"/>
+      <exported-key name="#FAKE_Library_book_issue_1" table="Library_book_issue" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_Library_bookinstance_1" table="Library_bookinstance" schema="" catalog="" columns="borrower_id"/>
+      <exported-key name="#FAKE_Library_feedback_1" table="Library_feedback" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_Library_fine_1" table="Library_fine" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_Library_users_1" table="Library_users" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_auth_user_groups_2" table="auth_user_groups" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_auth_user_user_permissions_2" table="auth_user_user_permissions" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_django_admin_log_1" table="django_admin_log" schema="" catalog="" columns="user_id"/>
+    </table>
+    <table name="auth_user_groups" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_user_groups_1" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_auth_user_groups_2" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="auth_user_groups_group_id_97559544" unique="true" columns="group_id"/>
+      <index name="auth_user_groups_user_id_6a12ed8b" unique="true" columns="user_id"/>
+      <index name="auth_user_groups_user_id_group_id_94350c0c_uniq" unique="true" columns="user_id,group_id"/>
+    </table>
+    <table name="auth_user_user_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_user_user_permissions_1" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_auth_user_user_permissions_2" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="auth_user_user_permissions_permission_id_1fbb5f2c" unique="true" columns="permission_id"/>
+      <index name="auth_user_user_permissions_user_id_a95ead1b" unique="true" columns="user_id"/>
+      <index name="auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" unique="true" columns="user_id,permission_id"/>
+    </table>
+    <table name="django_admin_log" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="object_id" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="object_repr" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="action_flag" sqlType="SMALLINT UNSIGNED" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="change_message" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="content_type_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="action_time" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_django_admin_log_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_django_admin_log_2" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="django_admin_log_user_id_c564eba6" unique="true" columns="user_id"/>
+      <index name="django_admin_log_content_type_id_c4bce8eb" unique="true" columns="content_type_id"/>
+    </table>
+    <table name="django_content_type" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="app_label" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="model" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_auth_permission_1" table="auth_permission" schema="" catalog="" columns="content_type_id"/>
+      <exported-key name="#FAKE_django_admin_log_2" table="django_admin_log" schema="" catalog="" columns="content_type_id"/>
+      <index name="django_content_type_app_label_model_76bd3d3b_uniq" unique="true" columns="app_label,model"/>
+    </table>
+    <table name="django_migrations" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="app" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="applied" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+    </table>
+    <table name="django_session" schema="" catalog="" type="TABLE">
+      <column name="session_key" sqlType="VARCHAR(40)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="session_data" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="session_key"/>
+      <index name="django_session_expire_date_a5c62663" unique="true" columns="expire_date"/>
+    </table>
+    <table name="django_site" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="domain" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+    </table>
+    <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
+      <column name="name" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="seq" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+    </table>
+  </data-source>
+</component>

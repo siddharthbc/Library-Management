@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fine</title>
+</head>
+<body>
+    <h1 style="text-align: center; border-bottom: 2px solid black">Fine Receipt</h1>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+        <tr>
+            <td style="text-align: center;">User</td>
+            <td>{{ username }}</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td style="text-align: center;">Book Borrowed</td>
+            <td>{{ book }}</td>
+        </tr><tr></tr>
+        <tr>
+            <td style="text-align: center;">Author</td>
+            <td>{{ author }}</td>
+        </tr><tr></tr>
+        <tr>
+            <td style="text-align: center;">Genre</td>
+            <td>{{ genre }}</td>
+        </tr><tr></tr>
+        <tr>
+            <td style="text-align: center;">Publisher</td>
+            <td>{{ publisher }}</td>
+        </tr><tr></tr>
+        <tr>
+            <td style="text-align: center;">ISBN</td>
+            <td>{{ isbn }}</td>
+        </tr><tr></tr>
+        <tr>
+            <td style="text-align: center;">Number of extra days borrowed</td>
+            <td>{{ extra_days }}</td>
+        </tr><tr></tr>
+        <tr>
+            <td style="text-align: center;">Fine Amount</td>
+            <td>Rs. {{ amount }}</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
